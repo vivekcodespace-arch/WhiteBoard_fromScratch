@@ -1,22 +1,10 @@
-'use client'
+'use client';
+import { useRef, useState, useEffect, useCallback } from 'react';
 
-import { useState, useRef, useEffect,  useCallback } from "react";
+type Point = { x: number; y: number };
+type Stroke = { points: Point[]; color: string; width: number };
 
-//now we also have to define the types
-type Point = {
-  x: number;
-  y: number;
-}
-type Stroke = {
-  points : Point[];
-  color: string;
-  width: number;
-}
-
-
-
-export default function Whiteboard(){
-
+export default function Whiteboard() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [strokes, setStrokes] = useState<Stroke[]>([]);
   const [currentStroke, setCurrentStroke] = useState<Stroke | null>(null);
@@ -43,91 +31,87 @@ export default function Whiteboard(){
     }
   }, []);
 
-  const redraw = useCallback (() => {
+  // Redraw all strokes from data
+  const redraw = useCallback(() => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext('2d');
-    if(!canvas || !ctx) return;
+    if (!canvas || !ctx) return;
 
     const rect = canvas.getBoundingClientRect();
-    ctx.clearRect(0,0,rect.width, rect.height);
+    ctx.clearRect(0, 0, rect.width, rect.height);
 
     const allStrokes = currentStroke ? [...strokes, currentStroke] : strokes;
 
-    for (const stroke of allStrokes){
-      if(stroke.points.length === 0) continue;
-
+    for (const stroke of allStrokes) {
+      if (stroke.points.length === 0) continue;
       ctx.strokeStyle = stroke.color;
       ctx.lineWidth = stroke.width;
       ctx.beginPath();
-      ctx.moveTo(stroke.points[0].x, stroke.points[0].y)
-      for(let i = 1;i<stroke.points.length; i++){
+      ctx.moveTo(stroke.points[0].x, stroke.points[0].y);
+      for (let i = 1; i < stroke.points.length; i++) {
         ctx.lineTo(stroke.points[i].x, stroke.points[i].y);
       }
       ctx.stroke();
     }
-  },[strokes, currentStroke]);
+  }, [strokes, currentStroke]);
 
-  useEffect(()=> {
+  // Initial sizing + handle window resize
+  useEffect(() => {
     resizeCanvas();
     redraw();
 
-    const handleResize = () =>{
+    const handleResize = () => {
       resizeCanvas();
       redraw();
-    }
+    };
 
     window.addEventListener('resize', handleResize);
-
     return () => window.removeEventListener('resize', handleResize);
   }, [resizeCanvas, redraw]);
 
-  //Redraw whenever stroke changes
+  // Redraw whenever strokes change
   useEffect(() => {
     redraw();
   }, [redraw]);
 
- 
-  const getPoint = (e: React.MouseEvent ) : Point => {
+  // Convert mouse event to canvas-relative coordinates
+  const getPoint = (e: React.MouseEvent): Point => {
     const canvas = canvasRef.current!;
     const rect = canvas.getBoundingClientRect();
-    
     return {
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
     };
-
   };
 
   const startDrawing = (e: React.MouseEvent) => {
     isDrawingRef.current = true;
-    console.log('start drawing is callded')
     setCurrentStroke({
-      points : [getPoint(e)],
-      color : '#000000',
-      width : 2,
+      points: [getPoint(e)],
+      color: '#000000',
+      width: 2,
     });
-  }
+  };
 
   const draw = (e: React.MouseEvent) => {
-    if(!isDrawingRef.current || !currentStroke) return;
-    console.log('draw is also called')
+    if (!isDrawingRef.current || !currentStroke) return;
     setCurrentStroke({
       ...currentStroke,
-      points : [...currentStroke.points, getPoint(e)],
+      points: [...currentStroke.points, getPoint(e)],
     });
-  }
+  };
 
   const stopDrawing = () => {
-    if(currentStroke && currentStroke.points.length > 0){
-      setStrokes((prev) => [...prev , currentStroke]);
+    if (currentStroke && currentStroke.points.length > 0) {
+      setStrokes((prev) => [...prev, currentStroke]);
     }
-    setCurrentStroke(null)
+    setCurrentStroke(null);
     isDrawingRef.current = false;
   };
-  
-  return(
+
+  return (
     <canvas
-      ref = {canvasRef}
+      ref={canvasRef}
       onMouseDown={startDrawing}
       onMouseMove={draw}
       onMouseUp={stopDrawing}
