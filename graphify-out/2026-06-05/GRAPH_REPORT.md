@@ -1,16 +1,16 @@
 # Graph Report - whiteboard_learning  (2026-06-05)
 
 ## Corpus Check
-- 14 files · ~2,011 words
+- 14 files · ~3,235 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 83 nodes · 65 edges · 21 communities (7 shown, 14 thin omitted)
+- 86 nodes · 67 edges · 22 communities (8 shown, 14 thin omitted)
 - Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 4 edges (avg confidence: 0.9)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a6b6700f`
+- Built from commit: `10d2fc90`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -35,22 +35,21 @@
 - [[_COMMUNITY_Community 17|Community 17]]
 - [[_COMMUNITY_Community 19|Community 19]]
 - [[_COMMUNITY_Community 20|Community 20]]
+- [[_COMMUNITY_Community 21|Community 21]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 16 edges
 2. `scripts` - 5 edges
-3. `Package Manifest` - 4 edges
+3. `Package Manifest` - 3 edges
 4. `hooks` - 2 edges
 5. `paths` - 2 edges
 6. `Next.js Config` - 2 edges
-7. `PreToolUse` - 1 edges
-8. `graphify` - 1 edges
-9. `Point` - 1 edges
-10. `Stroke` - 1 edges
+7. `Getting Started` - 1 edges
+8. `Learn More` - 1 edges
+9. `Deploy on Vercel` - 1 edges
+10. `Point` - 1 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `README - Next.js Project Intro` --references--> `Package Manifest`  [EXTRACTED]
-  README.md → package.json
 - `TypeScript Config` --shares_data_with--> `Next.js Config`  [INFERRED]
   tsconfig.json → next.config.ts
 - `Package Manifest` --references--> `ESLint Config`  [INFERRED]
@@ -68,7 +67,7 @@
 - **Graphify Output Artifacts** — claude_graph_json_artifact, claude_graph_report_artifact, claude_wiki_index_artifact [EXTRACTED 1.00]
 - **Search Tool Redirect to Graphify Flow** — claude_settings_search_command_matcher, claude_settings_graphify_advisory, claude_graph_json_artifact, claude_graphify_query_cmd [EXTRACTED 1.00]
 
-## Communities (21 total, 14 thin omitted)
+## Communities (22 total, 14 thin omitted)
 
 ### Community 0 - "TypeScript Compiler Options"
 Cohesion: 0.12
@@ -83,8 +82,8 @@ Cohesion: 0.22
 Nodes (9): devDependencies, eslint, eslint-config-next, tailwindcss, @tailwindcss/postcss, @types/node, @types/react, @types/react-dom (+1 more)
 
 ### Community 5 - "Project Config Files"
-Cohesion: 0.33
-Nodes (6): ESLint Config, Next.js Config, Package Manifest, PostCSS Config (Tailwind), README - Next.js Project Intro, TypeScript Config
+Cohesion: 0.40
+Nodes (5): ESLint Config, Next.js Config, Package Manifest, PostCSS Config (Tailwind), TypeScript Config
 
 ### Community 6 - "Root Layout & Fonts"
 Cohesion: 0.40
@@ -94,8 +93,12 @@ Nodes (3): geistMono, geistSans, metadata
 Cohesion: 0.40
 Nodes (5): scripts, build, dev, lint, start
 
+### Community 21 - "Community 21"
+Cohesion: 0.50
+Nodes (3): Deploy on Vercel, Getting Started, Learn More
+
 ## Knowledge Gaps
-- **57 isolated node(s):** `PreToolUse`, `graphify`, `Point`, `Stroke`, `geistSans` (+52 more)
+- **59 isolated node(s):** `Getting Started`, `Learn More`, `Deploy on Vercel`, `Point`, `Stroke` (+54 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -103,14 +106,14 @@ Nodes (5): scripts, build, dev, lint, start
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `compilerOptions` connect `TypeScript Compiler Options` to `Community 17`?**
-  _High betweenness centrality (0.050) - this node is a cross-community bridge._
+  _High betweenness centrality (0.047) - this node is a cross-community bridge._
 - **Why does `devDependencies` connect `Dev Dependencies & Tooling` to `Production Dependencies`?**
-  _High betweenness centrality (0.040) - this node is a cross-community bridge._
+  _High betweenness centrality (0.037) - this node is a cross-community bridge._
 - **Why does `scripts` connect `Community 16` to `Production Dependencies`?**
-  _High betweenness centrality (0.022) - this node is a cross-community bridge._
+  _High betweenness centrality (0.021) - this node is a cross-community bridge._
 - **Are the 3 inferred relationships involving `Package Manifest` (e.g. with `ESLint Config` and `Next.js Config`) actually correct?**
   _`Package Manifest` has 3 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `PreToolUse`, `graphify`, `Point` to the rest of the system?**
-  _58 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `Getting Started`, `Learn More`, `Deploy on Vercel` to the rest of the system?**
+  _60 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `TypeScript Compiler Options` be split into smaller, more focused modules?**
   _Cohesion score 0.11764705882352941 - nodes in this community are weakly interconnected._

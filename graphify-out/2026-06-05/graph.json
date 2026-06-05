@@ -89,166 +89,40 @@
   },
   "nodes": [
     {
-      "label": "settings.json",
-      "file_type": "code",
-      "source_file": ".claude/settings.json",
-      "source_location": "L1",
-      "id": "claude_settings_json",
-      "community": 7,
-      "norm_label": "settings.json"
-    },
-    {
-      "label": "hooks",
-      "file_type": "code",
-      "source_file": ".claude/settings.json",
-      "source_location": "L2",
-      "id": "claude_settings_hooks",
-      "community": 7,
-      "norm_label": "hooks"
-    },
-    {
-      "label": "PreToolUse",
-      "file_type": "code",
-      "source_file": ".claude/settings.json",
-      "source_location": "L3",
-      "id": "claude_settings_hooks_pretooluse",
-      "community": 7,
-      "norm_label": "pretooluse"
-    },
-    {
-      "label": "CLAUDE.md",
+      "label": "README.md",
       "file_type": "document",
-      "source_file": "CLAUDE.md",
+      "source_file": "README.md",
       "source_location": "L1",
-      "id": "claude_md",
-      "community": 19,
-      "norm_label": "claude.md"
+      "id": "readme_md",
+      "community": 21,
+      "norm_label": "readme.md"
     },
     {
-      "label": "graphify",
+      "label": "Getting Started",
       "file_type": "document",
-      "source_file": "CLAUDE.md",
+      "source_file": "README.md",
       "source_location": "L3",
-      "id": "whiteboard_learning_claude_graphify",
-      "community": 19,
-      "norm_label": "graphify"
+      "id": "whiteboard_learning_readme_getting_started",
+      "community": 21,
+      "norm_label": "getting started"
     },
     {
-      "label": "func.tsx",
-      "file_type": "code",
-      "source_file": "app/components/func.tsx",
-      "source_location": "L1",
-      "id": "app_components_func_tsx",
-      "community": 2,
-      "norm_label": "func.tsx"
+      "label": "Learn More",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L23",
+      "id": "whiteboard_learning_readme_learn_more",
+      "community": 21,
+      "norm_label": "learn more"
     },
     {
-      "label": "Point",
-      "file_type": "code",
-      "source_file": "app/components/func.tsx",
-      "source_location": "L4",
-      "id": "components_func_point",
-      "community": 2,
-      "norm_label": "point"
-    },
-    {
-      "label": "Stroke",
-      "file_type": "code",
-      "source_file": "app/components/func.tsx",
-      "source_location": "L5",
-      "id": "components_func_stroke",
-      "community": 2,
-      "norm_label": "stroke"
-    },
-    {
-      "label": "Whiteboard()",
-      "file_type": "code",
-      "source_file": "app/components/func.tsx",
-      "source_location": "L7",
-      "id": "components_func_whiteboard",
-      "community": 2,
-      "norm_label": "whiteboard()"
-    },
-    {
-      "label": "layout.tsx",
-      "file_type": "code",
-      "source_file": "app/layout.tsx",
-      "source_location": "L1",
-      "id": "app_layout_tsx",
-      "community": 6,
-      "norm_label": "layout.tsx"
-    },
-    {
-      "label": "geistSans",
-      "file_type": "code",
-      "source_file": "app/layout.tsx",
-      "source_location": "L5",
-      "id": "app_layout_geistsans",
-      "community": 6,
-      "norm_label": "geistsans"
-    },
-    {
-      "label": "geistMono",
-      "file_type": "code",
-      "source_file": "app/layout.tsx",
-      "source_location": "L10",
-      "id": "app_layout_geistmono",
-      "community": 6,
-      "norm_label": "geistmono"
-    },
-    {
-      "label": "metadata",
-      "file_type": "code",
-      "source_file": "app/layout.tsx",
-      "source_location": "L15",
-      "id": "app_layout_metadata",
-      "community": 6,
-      "norm_label": "metadata"
-    },
-    {
-      "label": "RootLayout()",
-      "file_type": "code",
-      "source_file": "app/layout.tsx",
-      "source_location": "L20",
-      "id": "app_layout_rootlayout",
-      "community": 6,
-      "norm_label": "rootlayout()"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "app/learn/page.tsx",
-      "source_location": "L1",
-      "id": "app_learn_page_tsx",
-      "community": 18,
-      "norm_label": "page.tsx"
-    },
-    {
-      "label": "Home()",
-      "file_type": "code",
-      "source_file": "app/learn/page.tsx",
-      "source_location": "L5",
-      "id": "learn_page_home",
-      "community": 18,
-      "norm_label": "home()"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "app/newpage/page.tsx",
-      "source_location": "L1",
-      "id": "app_newpage_page_tsx",
-      "community": 2,
-      "norm_label": "page.tsx"
-    },
-    {
-      "label": "Home()",
-      "file_type": "code",
-      "source_file": "app/newpage/page.tsx",
-      "source_location": "L9",
-      "id": "newpage_page_home",
-      "community": 2,
-      "norm_label": "home()"
+      "label": "Deploy on Vercel",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L32",
+      "id": "whiteboard_learning_readme_deploy_on_vercel",
+      "community": 21,
+      "norm_label": "deploy on vercel"
     },
     {
       "label": "page.tsx",
@@ -285,6 +159,168 @@
       "id": "app_page_whiteboard",
       "community": 1,
       "norm_label": "whiteboard()"
+    },
+    {
+      "label": "settings.json",
+      "file_type": "code",
+      "source_file": ".claude/settings.json",
+      "source_location": "L1",
+      "community": 7,
+      "norm_label": "settings.json",
+      "id": "claude_settings_json"
+    },
+    {
+      "label": "hooks",
+      "file_type": "code",
+      "source_file": ".claude/settings.json",
+      "source_location": "L2",
+      "community": 7,
+      "norm_label": "hooks",
+      "id": "claude_settings_hooks"
+    },
+    {
+      "label": "PreToolUse",
+      "file_type": "code",
+      "source_file": ".claude/settings.json",
+      "source_location": "L3",
+      "community": 7,
+      "norm_label": "pretooluse",
+      "id": "claude_settings_hooks_pretooluse"
+    },
+    {
+      "label": "CLAUDE.md",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L1",
+      "community": 19,
+      "norm_label": "claude.md",
+      "id": "claude_md"
+    },
+    {
+      "label": "graphify",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L3",
+      "community": 19,
+      "norm_label": "graphify",
+      "id": "whiteboard_learning_claude_graphify"
+    },
+    {
+      "label": "func.tsx",
+      "file_type": "code",
+      "source_file": "app/components/func.tsx",
+      "source_location": "L1",
+      "community": 2,
+      "norm_label": "func.tsx",
+      "id": "app_components_func_tsx"
+    },
+    {
+      "label": "Point",
+      "file_type": "code",
+      "source_file": "app/components/func.tsx",
+      "source_location": "L4",
+      "community": 2,
+      "norm_label": "point",
+      "id": "components_func_point"
+    },
+    {
+      "label": "Stroke",
+      "file_type": "code",
+      "source_file": "app/components/func.tsx",
+      "source_location": "L5",
+      "community": 2,
+      "norm_label": "stroke",
+      "id": "components_func_stroke"
+    },
+    {
+      "label": "Whiteboard()",
+      "file_type": "code",
+      "source_file": "app/components/func.tsx",
+      "source_location": "L7",
+      "community": 2,
+      "norm_label": "whiteboard()",
+      "id": "components_func_whiteboard"
+    },
+    {
+      "label": "layout.tsx",
+      "file_type": "code",
+      "source_file": "app/layout.tsx",
+      "source_location": "L1",
+      "community": 6,
+      "norm_label": "layout.tsx",
+      "id": "app_layout_tsx"
+    },
+    {
+      "label": "geistSans",
+      "file_type": "code",
+      "source_file": "app/layout.tsx",
+      "source_location": "L5",
+      "community": 6,
+      "norm_label": "geistsans",
+      "id": "app_layout_geistsans"
+    },
+    {
+      "label": "geistMono",
+      "file_type": "code",
+      "source_file": "app/layout.tsx",
+      "source_location": "L10",
+      "community": 6,
+      "norm_label": "geistmono",
+      "id": "app_layout_geistmono"
+    },
+    {
+      "label": "metadata",
+      "file_type": "code",
+      "source_file": "app/layout.tsx",
+      "source_location": "L15",
+      "community": 6,
+      "norm_label": "metadata",
+      "id": "app_layout_metadata"
+    },
+    {
+      "label": "RootLayout()",
+      "file_type": "code",
+      "source_file": "app/layout.tsx",
+      "source_location": "L20",
+      "community": 6,
+      "norm_label": "rootlayout()",
+      "id": "app_layout_rootlayout"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/learn/page.tsx",
+      "source_location": "L1",
+      "community": 18,
+      "norm_label": "page.tsx",
+      "id": "app_learn_page_tsx"
+    },
+    {
+      "label": "Home()",
+      "file_type": "code",
+      "source_file": "app/learn/page.tsx",
+      "source_location": "L5",
+      "community": 18,
+      "norm_label": "home()",
+      "id": "learn_page_home"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/newpage/page.tsx",
+      "source_location": "L1",
+      "community": 2,
+      "norm_label": "page.tsx",
+      "id": "app_newpage_page_tsx"
+    },
+    {
+      "label": "Home()",
+      "file_type": "code",
+      "source_file": "app/newpage/page.tsx",
+      "source_location": "L9",
+      "community": 2,
+      "norm_label": "home()",
+      "id": "newpage_page_home"
     },
     {
       "label": "tsconfig.json",
@@ -810,19 +846,6 @@
       "id": "concept_nextjs_breaking_changes"
     },
     {
-      "label": "README - Next.js Project Intro",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "community": 5,
-      "norm_label": "readme - next.js project intro",
-      "id": "whiteboard_learning_readme"
-    },
-    {
       "label": "window.svg icon",
       "file_type": "image",
       "source_file": "public/window.svg",
@@ -892,6 +915,66 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "readme_md",
+      "target": "whiteboard_learning_readme_deploy_on_vercel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "readme_md",
+      "target": "whiteboard_learning_readme_getting_started",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "readme_md",
+      "target": "whiteboard_learning_readme_learn_more",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_page_tsx",
+      "target": "app_page_point"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_page_tsx",
+      "target": "app_page_stroke"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.tsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_page_tsx",
+      "target": "app_page_whiteboard"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": ".claude/settings.json",
       "source_location": "L2",
       "weight": 1.0,
@@ -915,9 +998,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_md",
-      "target": "whiteboard_learning_claude_graphify",
-      "confidence_score": 1.0
+      "target": "whiteboard_learning_claude_graphify"
     },
     {
       "relation": "contains",
@@ -925,9 +1008,9 @@
       "source_file": "app/components/func.tsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_components_func_tsx",
-      "target": "components_func_point",
-      "confidence_score": 1.0
+      "target": "components_func_point"
     },
     {
       "relation": "contains",
@@ -935,9 +1018,9 @@
       "source_file": "app/components/func.tsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_components_func_tsx",
-      "target": "components_func_stroke",
-      "confidence_score": 1.0
+      "target": "components_func_stroke"
     },
     {
       "relation": "contains",
@@ -945,9 +1028,9 @@
       "source_file": "app/components/func.tsx",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_components_func_tsx",
-      "target": "components_func_whiteboard",
-      "confidence_score": 1.0
+      "target": "components_func_whiteboard"
     },
     {
       "relation": "imports_from",
@@ -956,9 +1039,9 @@
       "source_file": "app/newpage/page.tsx",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_newpage_page_tsx",
-      "target": "app_components_func_tsx",
-      "confidence_score": 1.0
+      "target": "app_components_func_tsx"
     },
     {
       "relation": "contains",
@@ -1006,9 +1089,9 @@
       "source_file": "app/learn/page.tsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_learn_page_tsx",
-      "target": "learn_page_home",
-      "confidence_score": 1.0
+      "target": "learn_page_home"
     },
     {
       "relation": "contains",
@@ -1016,39 +1099,9 @@
       "source_file": "app/newpage/page.tsx",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_newpage_page_tsx",
-      "target": "newpage_page_home",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/page.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_page_tsx",
-      "target": "app_page_point"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/page.tsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_page_tsx",
-      "target": "app_page_stroke"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/page.tsx",
-      "source_location": "L18",
-      "weight": 1.0,
-      "source": "app_page_tsx",
-      "target": "app_page_whiteboard",
-      "confidence_score": 1.0
+      "target": "newpage_page_home"
     },
     {
       "relation": "contains",
@@ -1521,16 +1574,6 @@
       "target": "whiteboard_learning_postcss_config"
     },
     {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": "L8",
-      "weight": 1.0,
-      "source": "whiteboard_learning_readme",
-      "target": "whiteboard_learning_package"
-    },
-    {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -1625,5 +1668,5 @@
       "source_file": ".claude/settings.json"
     }
   ],
-  "built_at_commit": "a6b6700ff4e607e2d80702211ae72004b4400c48"
+  "built_at_commit": "10d2fc906b5b22cddff5092e6886cacb0f754122"
 }
