@@ -1,21 +1,21 @@
 'use client'
 
-import { useState, useRef, useEffect,  useCallback } from "react";
-
+import { useState, useRef, useEffect, useCallback } from "react";
+import { io, Socket } from 'socket.io-client';
 //now we also have to define the types
 type Point = {
   x: number;
   y: number;
 }
 type Stroke = {
-  points : Point[];
+  points: Point[];
   color: string;
   width: number;
 }
 
 
 
-export default function Whiteboard(){
+export default function Whiteboard() {
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [strokes, setStrokes] = useState<Stroke[]>([]);
@@ -23,6 +23,7 @@ export default function Whiteboard(){
   const isDrawingRef = useRef(false);
   const [selectedcolor, setSelectedColor] = useState('#000000');
   const [brushSize, setBrushSize] = useState(2);
+  const socketRef = useRef<Socket | null>(null);
 
   // Resize canvas to match its CSS size, accounting for device pixel ratio
   const resizeCanvas = useCallback(() => {
@@ -45,35 +46,58 @@ export default function Whiteboard(){
     }
   }, []);
 
-  const redraw = useCallback (() => {
+  const redraw = useCallback(() => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext('2d');
-    if(!canvas || !ctx) return;
+    if (!canvas || !ctx) return;
 
     const rect = canvas.getBoundingClientRect();
-    ctx.clearRect(0,0,rect.width, rect.height);
+    ctx.clearRect(0, 0, rect.width, rect.height);
 
     const allStrokes = currentStroke ? [...strokes, currentStroke] : strokes;
 
-    for (const stroke of allStrokes){
-      if(stroke.points.length === 0) continue;
+    for (const stroke of allStrokes) {
+      if (stroke.points.length === 0) continue;
 
       ctx.strokeStyle = stroke.color;
       ctx.lineWidth = stroke.width;
       ctx.beginPath();
       ctx.moveTo(stroke.points[0].x, stroke.points[0].y)
-      for(let i = 1;i<stroke.points.length; i++){
+      for (let i = 1; i < stroke.points.length; i++) {
         ctx.lineTo(stroke.points[i].x, stroke.points[i].y);
       }
       ctx.stroke();
     }
-  },[strokes, currentStroke]);
+  }, [strokes, currentStroke]);
 
-  useEffect(()=> {
+  useEffect(() => {
+    const socket = io('http://localhost:3001');
+    socketRef.current = socket;
+
+    socket.on('connect', () => console.log('Connected:', socket.id));
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    const socket = socketRef.current;
+    if (!socket) return;
+
+    const handleStrokeAdded = (stroke: Stroke) => {
+      setStrokes((prev) => [...prev, stroke]);
+    };
+
+    socket.on('stroke:added', handleStrokeAdded);
+    return () => { socket.off('stroke:added', handleStrokeAdded); };
+  }, []);
+
+  useEffect(() => {
     resizeCanvas();
     redraw();
 
-    const handleResize = () =>{
+    const handleResize = () => {
       resizeCanvas();
       redraw();
     }
@@ -88,7 +112,7 @@ export default function Whiteboard(){
     redraw();
   }, [redraw]);
 
- 
+
   //clear the board
   const clearBoard = () => {
     setStrokes([]);
@@ -99,10 +123,10 @@ export default function Whiteboard(){
     setStrokes((prev) => prev.slice(0, -1));
   };
 
-  const getPoint = (e: React.MouseEvent ) : Point => {
+  const getPoint = (e: React.MouseEvent): Point => {
     const canvas = canvasRef.current!;
     const rect = canvas.getBoundingClientRect();
-    
+
     return {
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
@@ -114,69 +138,70 @@ export default function Whiteboard(){
     isDrawingRef.current = true;
     console.log('start drawing is callded')
     setCurrentStroke({
-      points : [getPoint(e)],
-      color : selectedcolor,
-      width : brushSize,
+      points: [getPoint(e)],
+      color: selectedcolor,
+      width: brushSize,
     });
   }
 
   const draw = (e: React.MouseEvent) => {
-    if(!isDrawingRef.current || !currentStroke) return;
+    if (!isDrawingRef.current || !currentStroke) return;
     console.log('draw is also called')
     setCurrentStroke({
       ...currentStroke,
-      points : [...currentStroke.points, getPoint(e)],
+      points: [...currentStroke.points, getPoint(e)],
     });
   }
 
   const stopDrawing = () => {
-    if(currentStroke && currentStroke.points.length > 0){
-      setStrokes((prev) => [...prev , currentStroke]);
+    if (currentStroke && currentStroke.points.length > 0) {
+      setStrokes((prev) => [...prev, currentStroke]);
+      socketRef.current?.emit('stroke:add', currentStroke);
     }
     setCurrentStroke(null)
     isDrawingRef.current = false;
   };
-  
+
   return (
-  <>
-    <div className="absolute top-4 left-4 z-10 bg-white p-3 rounded shadow flex gap-4 items-center">
-      <input
-        type="color"
-        value={selectedcolor}
-        onChange={(e) => setSelectedColor(e.target.value)}
+    <>
+      <div className="absolute top-4 left-4 z-10 bg-white p-3 rounded shadow flex gap-4 items-center">
+        <input
+          type="color"
+          value={selectedcolor}
+          onChange={(e) => setSelectedColor(e.target.value)}
+        />
+
+        <input
+          type="range"
+          min="1"
+          max="20"
+          value={brushSize}
+          onChange={(e) => setBrushSize(Number(e.target.value))}
+        />
+
+        <button
+          onClick={undoLastStroke}
+          className="border px-2 py-1"
+        >
+          Undo
+        </button>
+
+        <button
+          onClick={clearBoard}
+          className="border px-2 py-1"
+        >
+          Clear
+        </button>
+      </div>
+
+      <canvas
+        ref={canvasRef}
+        onMouseDown={startDrawing}
+        onMouseMove={draw}
+        onMouseUp={stopDrawing}
+        onMouseLeave={stopDrawing}
+        className="bg-white cursor-crosshair w-screen h-screen block"
       />
-
-      <input
-        type="range"
-        min="1"
-        max="20"
-        value={brushSize}
-        onChange={(e) => setBrushSize(Number(e.target.value))}
-      />
-
-      <button
-        onClick={undoLastStroke}
-        className="border px-2 py-1"
-      >
-        Undo
-      </button>
-
-      <button
-        onClick={clearBoard}
-        className="border px-2 py-1"
-      >
-        Clear
-      </button>
-    </div>
-
-    <canvas
-      ref={canvasRef}
-      onMouseDown={startDrawing}
-      onMouseMove={draw}
-      onMouseUp={stopDrawing}
-      onMouseLeave={stopDrawing}
-      className="bg-white cursor-crosshair w-screen h-screen block"
-    />
-  </>
+    </>
   );
 }

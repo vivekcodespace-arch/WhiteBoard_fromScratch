@@ -30,14 +30,14 @@
     "semantic_hash": "87f0d903477984d0587a02f8fe185263"
   },
   "/home/vivek/Workspace/whiteboard_learning/app/page.tsx": {
-    "mtime": 1780040676.6998641,
-    "ast_hash": "30633616261ccbe3ac672c9cc0817608",
-    "semantic_hash": "30633616261ccbe3ac672c9cc0817608"
+    "mtime": 1780658067.4987006,
+    "ast_hash": "021a24667f557e587f2dce9285e693f4",
+    "semantic_hash": ""
   },
   "/home/vivek/Workspace/whiteboard_learning/app/layout.tsx": {
-    "mtime": 1780026216.0229352,
-    "ast_hash": "94c34ef68b3949a75807a0211ec2273c",
-    "semantic_hash": "94c34ef68b3949a75807a0211ec2273c"
+    "mtime": 1780293804.4589553,
+    "ast_hash": "98b01232f16ea503299be1b5930778ff",
+    "semantic_hash": ""
   },
   "/home/vivek/Workspace/whiteboard_learning/CLAUDE.md": {
     "mtime": 1780076028.137094,
@@ -78,5 +78,20 @@
     "mtime": 1780026216.021935,
     "ast_hash": "d09f95206c3fa0bb9bd9fefabfd0ea71",
     "semantic_hash": "d09f95206c3fa0bb9bd9fefabfd0ea71"
+  },
+  "/home/vivek/Workspace/whiteboard_learning/app/components/func.tsx": {
+    "mtime": 1780650933.7929997,
+    "ast_hash": "1f647318b3d50c7196bd0d4bbec552fb",
+    "semantic_hash": ""
+  },
+  "/home/vivek/Workspace/whiteboard_learning/app/learn/page.tsx": {
+    "mtime": 1780477228.497874,
+    "ast_hash": "e51858703454309978e888b3a4323955",
+    "semantic_hash": ""
+  },
+  "/home/vivek/Workspace/whiteboard_learning/app/newpage/page.tsx": {
+    "mtime": 1780468972.484626,
+    "ast_hash": "78116ccf18ac07dae4ec74ee57af5a91",
+    "semantic_hash": ""
   }
 }
