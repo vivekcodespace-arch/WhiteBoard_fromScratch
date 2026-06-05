@@ -21,6 +21,8 @@ export default function Whiteboard(){
   const [strokes, setStrokes] = useState<Stroke[]>([]);
   const [currentStroke, setCurrentStroke] = useState<Stroke | null>(null);
   const isDrawingRef = useRef(false);
+  const [selectedcolor, setSelectedColor] = useState('#000000');
+  const [brushSize, setBrushSize] = useState(2);
 
   // Resize canvas to match its CSS size, accounting for device pixel ratio
   const resizeCanvas = useCallback(() => {
@@ -87,6 +89,16 @@ export default function Whiteboard(){
   }, [redraw]);
 
  
+  //clear the board
+  const clearBoard = () => {
+    setStrokes([]);
+    setCurrentStroke(null);
+  }
+
+  const undoLastStroke = () => {
+    setStrokes((prev) => prev.slice(0, -1));
+  };
+
   const getPoint = (e: React.MouseEvent ) : Point => {
     const canvas = canvasRef.current!;
     const rect = canvas.getBoundingClientRect();
@@ -103,8 +115,8 @@ export default function Whiteboard(){
     console.log('start drawing is callded')
     setCurrentStroke({
       points : [getPoint(e)],
-      color : '#000000',
-      width : 2,
+      color : selectedcolor,
+      width : brushSize,
     });
   }
 
@@ -125,14 +137,46 @@ export default function Whiteboard(){
     isDrawingRef.current = false;
   };
   
-  return(
+  return (
+  <>
+    <div className="absolute top-4 left-4 z-10 bg-white p-3 rounded shadow flex gap-4 items-center">
+      <input
+        type="color"
+        value={selectedcolor}
+        onChange={(e) => setSelectedColor(e.target.value)}
+      />
+
+      <input
+        type="range"
+        min="1"
+        max="20"
+        value={brushSize}
+        onChange={(e) => setBrushSize(Number(e.target.value))}
+      />
+
+      <button
+        onClick={undoLastStroke}
+        className="border px-2 py-1"
+      >
+        Undo
+      </button>
+
+      <button
+        onClick={clearBoard}
+        className="border px-2 py-1"
+      >
+        Clear
+      </button>
+    </div>
+
     <canvas
-      ref = {canvasRef}
+      ref={canvasRef}
       onMouseDown={startDrawing}
       onMouseMove={draw}
       onMouseUp={stopDrawing}
       onMouseLeave={stopDrawing}
       className="bg-white cursor-crosshair w-screen h-screen block"
     />
+  </>
   );
 }
